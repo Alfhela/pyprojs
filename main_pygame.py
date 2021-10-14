@@ -1,5 +1,4 @@
 import pygame
-from pygame import event
 
 
 class Person(pygame.sprite.Sprite):
@@ -19,10 +18,10 @@ class Person(pygame.sprite.Sprite):
 
     def move(self, dx, dy):
         """Метод класса для перемещения участника игры"""
-        if self.ableToMove == True:
-            self.position[0] += dx
-            self.position[1] += dy
-            self.rect.center = (self.position[0], self.position[1])
+
+        self.position[0] += dx
+        self.position[1] += dy
+        self.rect.center = (self.position[0], self.position[1])
 
     def freeze(self):
         """Метод для остановки всех участников игры"""
@@ -55,15 +54,22 @@ print("Положение игрока:", pl2.number, pl2.position)
 pl1.move(2, 2)  # скомандуем игроку переместиться
 print("Положение игрока 1:", pl1.position)
 pl2.move(100, 100)
-pygame.init
+
+
+pygame.init()
 scr = pygame.display.set_mode((400, 400))
+
+# основной цикл
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            exit('quit')
+            exit()
+
     scr.fill((255, 255, 255))
     scr.blit(pl1.image, pl1.rect)
     scr.blit(pl2.image, pl2.rect)
     pygame.display.update()
     pygame.time.delay(200)
-    pl1.move(1, 1)
+
+    pl1.move(1,1)
+
