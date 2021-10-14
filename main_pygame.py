@@ -1,13 +1,13 @@
 import pygame
 
-# TODO: fis issue #1
-class Person(pygame.sprite.Sprite):
-    """Класс для описания любого участника игры"""
 
-    # Аттрибуты класса
+class Person(pygame.sprite.Sprite):
+    
+
+    
     ableToMove = True
 
-    # Методы класса
+    
     def __init__(self, x=0, y=0):
         super().__init__()
         self.position = [x, y]
@@ -17,14 +17,14 @@ class Person(pygame.sprite.Sprite):
         self.rect.center = (self.position[0], self.position[1])
 
     def move(self, dx, dy):
-        """Метод класса для перемещения участника игры"""
+        
 
         self.position[0] += dx
         self.position[1] += dy
         self.rect.center = (self.position[0], self.position[1])
 
     def freeze(self):
-        """Метод для остановки всех участников игры"""
+        
         self.ableToMove = False
 
 
@@ -37,29 +37,21 @@ class Player(Person):
 
 
 class Goalkeeper(Player):
-    """Класс для описания вратаря, потомок класса Player"""
+    
 
     pass
 
 
-person1 = Person()  # создаем человека
-print("Положение человека 1:", person1.position)
-person1.move(1, 1)  # отдаем команду человеку переместиться
-print("Положение человека 1 после перемещения:", person1.position)
+pl1 = Player("1")  
+pl2 = Player("2")  
 
-pl1 = Player("1")  # создаем игрока
-pl2 = Player("2")  # создаем еще одного игрока
-print("Положение игрока:", pl1.number, pl1.position)
-print("Положение игрока:", pl2.number, pl2.position)
-pl1.move(2, 2)  # скомандуем игроку переместиться
-print("Положение игрока 1:", pl1.position)
+pl1.move(2, 2) 
 pl2.move(100, 100)
 
 
 pygame.init()
 scr = pygame.display.set_mode((400, 400))
 
-# основной цикл
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -72,4 +64,3 @@ while True:
     pygame.time.delay(200)
 
     pl1.move(1,1)
-
