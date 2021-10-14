@@ -1,5 +1,7 @@
 import pygame
 
+pygame.font.init()
+
 
 # import pygame.Co
 
@@ -24,17 +26,15 @@ class Person(pygame.sprite.Sprite):
 
 
 class Player(Person):
-    """Класс для описания игроков, потомок класса Person"""
 
     def __init__(self, num, color):
         super().__init__()
         self.number = num
         self.color = color
         self.image.fill(self.color)
-
-
-class Goalkeeper(Player):
-    pass
+        self.font = pygame.font.SysFont("default", 90)
+        self.numtext = self.font.render(num, False, (0, 0, 0))
+        self.image.blit(self.numtext, (0, 0))
 
 
 pl1 = Player("1", "blue")
