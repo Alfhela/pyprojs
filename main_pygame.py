@@ -1,13 +1,11 @@
 import pygame
 
 
-class Person(pygame.sprite.Sprite):
-    
+# import pygame.Co
 
-    
+class Person(pygame.sprite.Sprite):
     ableToMove = True
 
-    
     def __init__(self, x=0, y=0):
         super().__init__()
         self.position = [x, y]
@@ -17,37 +15,33 @@ class Person(pygame.sprite.Sprite):
         self.rect.center = (self.position[0], self.position[1])
 
     def move(self, dx, dy):
-        
-
         self.position[0] += dx
         self.position[1] += dy
         self.rect.center = (self.position[0], self.position[1])
 
     def freeze(self):
-        
         self.ableToMove = False
 
 
 class Player(Person):
     """Класс для описания игроков, потомок класса Person"""
 
-    def __init__(self, num):
+    def __init__(self, num, color):
         super().__init__()
         self.number = num
+        self.color = color
+        self.image.fill(self.color)
 
 
 class Goalkeeper(Player):
-    
-
     pass
 
 
-pl1 = Player("1")  
-pl2 = Player("2")  
+pl1 = Player("1", "blue")
+pl2 = Player("2", "red")
 
-pl1.move(2, 2) 
+pl1.move(2, 2)
 pl2.move(100, 100)
-
 
 pygame.init()
 scr = pygame.display.set_mode((400, 400))
@@ -63,4 +57,4 @@ while True:
     pygame.display.update()
     pygame.time.delay(200)
 
-    pl1.move(1,1)
+    pl1.move(1, 1)
