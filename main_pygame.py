@@ -3,9 +3,10 @@ import pygame
 pygame.font.init()
 
 
-# import pygame.Co
+
 
 class Person(pygame.sprite.Sprite):
+    # TODO #2 : сделать коллизию 
     ableToMove = True
 
     def __init__(self, x=0, y=0):
@@ -42,7 +43,6 @@ pl2 = Player("2", "red")
 
 pl1.move(2, 2)
 pl2.move(100, 100)
-
 pygame.init()
 scr = pygame.display.set_mode((400, 400))
 
