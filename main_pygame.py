@@ -3,11 +3,12 @@ import pygame
 pygame.font.init()
 
 
-# import pygame.Co
+
 
 class Person(pygame.sprite.Sprite):
+    # TODO #2 : сделать коллизию 
     ableToMove = True
-
+    
     def __init__(self, x=0, y=0):
         super().__init__()
         self.position = [x, y]
@@ -23,6 +24,11 @@ class Person(pygame.sprite.Sprite):
 
     def freeze(self):
         self.ableToMove = False
+    def col(self,p2):
+        print(self.rect.colliderect(p2.get_rect()))        
+
+    def get_rect(self):
+        return self.rect
 
 
 class Player(Person):
@@ -42,7 +48,6 @@ pl2 = Player("2", "red")
 
 pl1.move(2, 2)
 pl2.move(100, 100)
-
 pygame.init()
 scr = pygame.display.set_mode((400, 400))
 
@@ -58,3 +63,4 @@ while True:
     pygame.time.delay(200)
 
     pl1.move(1, 1)
+    pl1.col(pl2)
