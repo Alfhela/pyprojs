@@ -30,7 +30,7 @@ class GameObject(pygame.sprite.Sprite):
         self.position = value
         self.rect.center = self.position[0], self.position[1]
 
-
+class Gate(GameObject)
 class Person(GameObject):
     """Класс для описания любого участника игры"""
 
@@ -93,9 +93,9 @@ class Ball(GameObject):
         self.rect.center = (self.position[0], self.position[1])
 
     def collision_update(self):
-        pass
-        # self.speed[0] *= -1
-        # self.speed[1] *= -1
+        # pass
+        self.speed[0] *= -1
+        self.speed[1] *= -1
 
     def set_speed(self, val):
         self.speed = val
@@ -124,6 +124,7 @@ pl3.move(350, 350)
 # pl3.move(310, 40)
 # pl4.move(200, 200)
 b = Ball(100, 100)
+b.set_speed([1,1])
 scr = pygame.display.set_mode((400, 400))
 
 all_sprites = pygame.sprite.Group()  # группа для всех "спрайтов"
